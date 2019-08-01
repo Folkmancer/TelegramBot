@@ -12,6 +12,7 @@ branches:
   - master
 after_success:
   - sh .travis/deploy_dockerhub.sh
+  - test “$TRAVIS_BRANCH” = “master” && sh .travis/deploy_heroku.sh
 #deploy:
 #  provider: heroku
 #  app: tinytinabot
