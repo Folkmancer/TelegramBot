@@ -5,5 +5,5 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then
 else
     TAG="$TRAVIS_BRANCH"
 fi
-docker build -f Dockerfile -t folkmancer/tinytinabot:latest .
+docker build -f TinyTinaBot/Dockerfile -t folkmancer/tinytinabot:latest .
 docker push folkmancer/tinytinabot:latest
