@@ -9,4 +9,4 @@ fi
 #docker push folkmancer-telegrambot
 
 docker build -f TinyTinaBot/Dockerfile .
-docker push tinytinabot
+docker push
