@@ -1,0 +1,17 @@
+language: csharp
+sudo: required
+dist: bionic
+mono: none
+dotnet: 2.2
+solution: TelegramBot.sln
+script:
+- dotnet restore
+- dotnet test
+branches:
+  only:
+  - master
+deploy:
+  provider: heroku
+  app: tinytinabot
+  api_key:
+    secure: dc214gVm5msOxYHEdFutS0hGMsQ2NZSE+OHrPv9+E7KHesxd4wFOSFhB4KOs55mt6HOdXgeTQMWlZLkwUb0OUsw0zjbfjP9glXyT7OjrIk5okrIlXnlQ4vcltT2HOD7l6+pbkM81ljJmiw9y/sihsyfnSkPIZb6Ocg7iQgSJn5AWAxzZ9ix0mcCehxls5df+PnyJjqBmWECO3kedQVIlZOMUj1TyAhIAkz/Yz/KT1X88PzdetIERjD9c0zhvQ+ipql+fQyPM1DvWrX/WXny3xq2v6ucHFZsVautlfrca8Kh8pzyF5Gkll8xUr8azfNrlmL5pY7HODST/GsRuHIFExnzCC/EAjDqU05vHXpPmvzaOCKCx0U3FLm1DvjYKO1vk9mP5X275gUJw4EFeiCKvI9v4I+83+DQWCuZw8NEMI297CXwIdv/TDi7dL/cyUf25ZZMghXO+CKlaGm/fX+/1ZwIfVpLGNdaBzIBDVi4nb92GzGV12zj8HJcLh2MNRANa9iJ1Gww7jUF/pgebagkt3LznUwYmbBlauUv7AZsBCH4TpODvTdArmvfcOUzMnEUMkPzWrPe8ufO+vXypT2V+r6tlVoOZwyPRNTveLx8/Mom32/Bp8VAzmFyByxuIS36PAwjy+OQIwBP7nkdvyHIgxzpuv3ppai+9jKjoZbZmap4=
