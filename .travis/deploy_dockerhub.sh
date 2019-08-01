@@ -8,5 +8,5 @@ fi
 #docker build -f TinyTinaBot/Dockerfile -t folkmancer-telegrambot:$TAG .
 #docker push folkmancer-telegrambot
 
-docker build -f TinyTinaBot/Dockerfile .
-docker push
+docker build -f TinyTinaBot/Dockerfile -t folkmancer/tinytinabot:latest
+docker push folkmancer/tinytinabot:latest
