@@ -17,4 +17,5 @@ RUN dotnet publish "TinyTinaBot.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-CMD ["dotnet", "TinyTinaBot.dll"]
+#CMD ["dotnet", "TinyTinaBot.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet TinyTinaBot.dll
