@@ -1,8 +1,5 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
 WORKDIR /app
-#ENV BotUrl=$BOT_URL 
-#ENV BotName=$BOT_NAME 
-#ENV BotKey=$BOT_KEY
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
