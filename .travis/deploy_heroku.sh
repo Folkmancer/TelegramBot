@@ -1,5 +1,5 @@
 #!/bin/sh
-#wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 #heroku plugins:install heroku-container-registry
 echo "$HEROKU_API_KEY" | docker login -u _ --password-stdin registry.heroku.com
 #docker login -u _ --password=$HEROKU_API_KEY registry.heroku.com
