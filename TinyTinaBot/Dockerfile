@@ -18,4 +18,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 #CMD ["dotnet", "TinyTinaBot.dll"]
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet TinyTinaBot.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet TinyTinaBot.dll $BOT_URL $BOT_NAME $BOT_KEY
