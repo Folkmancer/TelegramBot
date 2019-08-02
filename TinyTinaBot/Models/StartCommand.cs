@@ -19,7 +19,7 @@ namespace TinyTinaBot.Models
         public async Task Execute(Message message, TelegramBotClient botClient)
         {
             var chatId = message.Chat.Id;
-            await botClient.SendTextMessageAsync(chatId, "Hallo I'm ASP.NET Core Bot", parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
+            await botClient.SendTextMessageAsync(chatId, "Привет, засранцы, я Крошка Тина! И я помогу вам с расскладкой!", parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
         }
     }
 }
