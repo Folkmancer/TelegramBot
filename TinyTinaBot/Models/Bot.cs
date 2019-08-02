@@ -20,6 +20,9 @@ namespace TinyTinaBot.Models
 
             commandsList = new List<ICommand>();
             commandsList.Add(new StartCommand());
+            commandsList.Add(new TransferRuCommand());
+            commandsList.Add(new TransferEnCommand());
+            
             //TODO: Add more commands
 
             botClient = new TelegramBotClient(BotSettings.Key);
