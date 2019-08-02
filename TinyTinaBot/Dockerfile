@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
 WORKDIR /app
-ENV BotUrl=$BOT_URL 
-ENV BotName=$BOT_NAME 
-ENV BotKey=$BOT_KEY
+#ENV BotUrl=$BOT_URL 
+#ENV BotName=$BOT_NAME 
+#ENV BotKey=$BOT_KEY
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
@@ -18,4 +18,4 @@ RUN dotnet publish "TinyTinaBot.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet TinyTinaBot.dll
+CMD ASPNETCORE_URLS=http://*:$PORT BotUrl=$BOT_URL BotName=$BOT_NAME  BotKey=$BOT_KEY dotnet TinyTinaBot.dll

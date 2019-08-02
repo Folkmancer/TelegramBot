@@ -10,7 +10,7 @@ namespace TinyTinaBot
         public static void Main(string[] args)
         {
             var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                //.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .Build();
 
