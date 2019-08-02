@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using TinyTinaBot.Models;
 
 namespace TinyTinaBot
@@ -15,9 +9,15 @@ namespace TinyTinaBot
     {
         public static void Main(string[] args)
         {
-            BotSettings.Url = args[0];
-            BotSettings.Name = args[1];
-            BotSettings.Key = args[2];
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables()
+                .Build();
+
+            BotSettings.Url = config["BotUrl"];
+            BotSettings.Name = config["BotName"];
+            BotSettings.Key = config["BotKey"];
+
             CreateWebHostBuilder(args).Build().Run();
         }
 
