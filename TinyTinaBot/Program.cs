@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using TinyTinaBot.Models;
 
 namespace TinyTinaBot
 {
@@ -14,6 +15,9 @@ namespace TinyTinaBot
     {
         public static void Main(string[] args)
         {
+            BotSettings.Url = args[0];
+            BotSettings.Name = args[1];
+            BotSettings.Key = args[2];
             CreateWebHostBuilder(args).Build().Run();
         }
 
