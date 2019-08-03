@@ -21,15 +21,12 @@ namespace TinyTinaBot.Models
             var chatId = message.Chat.Id;
             await botClient.SendChatActionAsync(chatId, Telegram.Bot.Types.Enums.ChatAction.Typing);
             await botClient.SendTextMessageAsync(chatId, "Дайте мне текст!");
+            botClient.IsReceiving = false;
             botClient.StartReceiving();
             if (botClient.IsReceiving)
             {
                 await botClient.SendTextMessageAsync(chatId, TextLayoutTranslator.TranslateIntoRU(message.Text), parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
                 botClient.StopReceiving();
-                // if (!IsValidUsername(update.Message.ReplyToMessage.Text)) return;
-                //SaveUsernameToDb(update.Message.Chat.Id, update.Message.ReplyToMessage.Text);
-                //Bot.SendChatAction(update.Message.Chat.Id, ChatAction.Typing);
-                //Bot.SendTextMessage(update.Message.Chat.Id, "Username has been successfully saved!");
             }       
         }
     }
