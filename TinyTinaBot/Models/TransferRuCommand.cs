@@ -18,6 +18,7 @@ namespace TinyTinaBot.Models
 
         public async Task Execute(Message message, TelegramBotClient botClient)
         {
+            botClient.StopReceiving();
             var chatId = message.Chat.Id;
             await botClient.SendChatActionAsync(chatId, Telegram.Bot.Types.Enums.ChatAction.Typing);
             await botClient.SendTextMessageAsync(chatId, "Дайте мне текст!");
