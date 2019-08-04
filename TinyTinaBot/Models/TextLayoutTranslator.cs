@@ -14,34 +14,36 @@ namespace TinyTinaBot.Models
 
         public static string TranslateIntoRU(string text)
         {
-            int index;
-            string newMessage = "";
+            string newMessage = default;
             foreach (char symbol in text)
             {
-                index = enL.IndexOf(symbol);
-                if (index != -1) newMessage += ruL[index];
-                else
+                if (char.IsWhiteSpace(symbol))
                 {
-                    index = enU.IndexOf(symbol);
-                    if (index != -1) newMessage += ruU[index];
+                    newMessage += " ";
+                    continue;
                 }
+                else if (enL.Contains(symbol))
+                    newMessage += ruL[enL.IndexOf(symbol)];
+                else if (enU.Contains(symbol))
+                    newMessage += ruU[enU.IndexOf(symbol)];
             }
             return newMessage;
         }
 
         public static string TranslateIntoEN(string text)
         {
-            int index;
-            string newMessage = "";
+            string newMessage = default;
             foreach (char symbol in text)
             {
-                index = ruL.IndexOf(symbol);
-                if (index != -1) newMessage += enL[index];
-                else
+                if (char.IsWhiteSpace(symbol))
                 {
-                    index = ruU.IndexOf(symbol);
-                    if (index != -1) newMessage += enU[index];
+                    newMessage += " ";
+                    continue;
                 }
+                else if (ruL.Contains(symbol))
+                    newMessage += enL[ruL.IndexOf(symbol)];
+                else if (ruU.Contains(symbol))
+                    newMessage += enU[ruU.IndexOf(symbol)];
             }
             return newMessage;
         }

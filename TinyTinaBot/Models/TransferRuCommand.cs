@@ -18,17 +18,15 @@ namespace TinyTinaBot.Models
 
         public async Task Execute(Message message, TelegramBotClient botClient)
         {
-            botClient.StopReceiving();
             var chatId = message.Chat.Id;
-            await botClient.SendChatActionAsync(chatId, Telegram.Bot.Types.Enums.ChatAction.Typing);
-            await botClient.SendTextMessageAsync(chatId, "Дайте мне текст!");
-            botClient.IsReceiving = false;
-            botClient.StartReceiving();
-            if (botClient.IsReceiving)
+            message.Text = message.Text.Replace("/ru", "");
+            if (message.Text.Length != 0)
             {
-                await botClient.SendTextMessageAsync(chatId, TextLayoutTranslator.TranslateIntoRU(message.Text), parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
-                botClient.StopReceiving();
-            }       
+                string text = message.Text.Trim();
+                await botClient.SendTextMessageAsync(chatId, TextLayoutTranslator.TranslateIntoRU(text), parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
+            }
+            else
+                await botClient.SendTextMessageAsync(chatId, "Дайте мне текст!");
         }
     }
 }
