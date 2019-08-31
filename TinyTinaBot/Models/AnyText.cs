@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.ReplyMarkups;
 
 namespace TinyTinaBot.Models
 {
@@ -22,7 +23,11 @@ namespace TinyTinaBot.Models
         public async Task Execute(Message message, TelegramBotClient botClient)
         {
             var chatId = message.Chat.Id;
-            await botClient.SendTextMessageAsync(chatId, "Вы прислали:" + message.Text, parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
+            await botClient.SendTextMessageAsync(chatId,
+                "Вы прислали:" + message.Text,
+                parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown,
+                replyToMessageId: message.MessageId,
+                replyMarkup: new ReplyKeyboardMarkup(new KeyboardButton[] { new KeyboardButton("на русский"), new KeyboardButton("на английский") }));
         }
     }
 }
