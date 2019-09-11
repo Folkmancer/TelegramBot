@@ -1,15 +1,18 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+п»їusing Microsoft.VisualStudio.TestTools.UnitTesting;
 using TinyTinaBot.Models;
+using System.Globalization;
 
 namespace TinyTinaBot.Test
 {
     [TestClass]
-    public class TextLayoutTranslatorTest
+    public class TextLayoutTranslatorTest1
     {
+
         [TestMethod]
         public void TranslateIntoRUTestMethod1()
         {
-            string text = "привет";
+            CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("ru-RU");
+            string text = "РїСЂРёРІРµС‚";
             string message = "ghbdtn";
             Assert.AreEqual(text, TextLayoutTranslator.TranslateIntoRU(message));
         }
@@ -17,7 +20,8 @@ namespace TinyTinaBot.Test
         [TestMethod]
         public void TranslateIntoRUTestMethod2()
         {
-            string text = "Привет, товарищ!";
+            CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("ru-RU");
+            string text = "РџСЂРёРІРµС‚, С‚РѕРІР°СЂРёС‰!";
             string message = "Ghbdtn? njdfhbo!";
             Assert.AreEqual(text, TextLayoutTranslator.TranslateIntoRU(message));
         }
@@ -25,7 +29,8 @@ namespace TinyTinaBot.Test
         [TestMethod]
         public void TranslateIntoRUTestMethod3()
         {
-            string text = "13 июля";
+            CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("ru-RU");
+            string text = "13 РёСЋР»СЏ";
             string message = "13 b.kz";
             Assert.AreEqual(text, TextLayoutTranslator.TranslateIntoRU(message));
         }
@@ -34,7 +39,7 @@ namespace TinyTinaBot.Test
         public void TranslateIntoENTestMethod1()
         {
             string text = "ghbdtn";
-            string message = "привет";
+            string message = "РїСЂРёРІРµС‚";
             Assert.AreEqual(text, TextLayoutTranslator.TranslateIntoEN(message));
         }
 
@@ -42,7 +47,7 @@ namespace TinyTinaBot.Test
         public void TranslateIntoENTestMethod2()
         {
             string text = "Ghbdtn? njdfhbo!";
-            string message = "Привет, товарищ!";
+            string message = "РџСЂРёРІРµС‚, С‚РѕРІР°СЂРёС‰!";
             Assert.AreEqual(text, TextLayoutTranslator.TranslateIntoEN(message));
         }
 
@@ -50,7 +55,7 @@ namespace TinyTinaBot.Test
         public void TranslateIntoENTestMethod3()
         {
             string text = "13 b.kz";
-            string message = "13 июля";
+            string message = "13 РёСЋР»СЏ";
             Assert.AreEqual(text, TextLayoutTranslator.TranslateIntoEN(message));
         }
     }
