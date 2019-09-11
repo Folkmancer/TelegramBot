@@ -5,7 +5,7 @@ using System.Globalization;
 namespace TinyTinaBot.Test
 {
     [TestClass]
-    public class TextLayoutTranslatorTest1
+    public class TextLayoutTranslatorTest
     {
 
         [TestMethod]
