@@ -20,9 +20,7 @@ namespace TinyTinaBot.Models
 
             commandsList = new List<ICommand>();
             commandsList.Add(new StartCommand());
-            commandsList.Add(new TransferRuCommand());
-            commandsList.Add(new TransferEnCommand());
-            commandsList.Add(new AnyText());
+            commandsList.Add(new Text());
             
             //TODO: Add more commands
 

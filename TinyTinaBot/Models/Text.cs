@@ -4,7 +4,7 @@ using Telegram.Bot.Types;
 
 namespace TinyTinaBot.Models
 {
-    public class AnyText : ICommand
+    public class Text : ICommand
     {
         public string Name => @"/text";
 
