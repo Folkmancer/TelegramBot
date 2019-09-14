@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Text;
+using System.Net.Http;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
+using Newtonsoft.Json;
 
 namespace TinyTinaBot.Models
 {
@@ -22,20 +25,27 @@ namespace TinyTinaBot.Models
 
         public async Task Execute(Message message, TelegramBotClient botClient)
         {
-            var keybord = new ReplyKeyboardMarkup(new KeyboardButton[] { new KeyboardButton("на русский"), new KeyboardButton("на английский") });
-            keybord.Selective = true;
-            keybord.OneTimeKeyboard = true;
             var chatId = message.Chat.Id;
-            
-            /*await botClient.SendTextMessageAsync(chatId,
-                "Вы прислали:" + message.Text,
-                parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown,
-                replyToMessageId: message.MessageId,
-                replyMarkup: new ReplyKeyboardMarkup(new KeyboardButton[] { new KeyboardButton("на русский"), new KeyboardButton("на английский") }));*/
-            await botClient.SendTextMessageAsync(chatId,
-            "На какую раскладку перевести?",
-            parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown,
-            replyMarkup: keybord);
+            CheckText[] words;
+            StringBuilder goodText = new StringBuilder();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://speller.yandex.net/services/spellservice.json/checkText");
+                var content = new FormUrlEncodedContent(new[] {
+                            new KeyValuePair<string, string>("text", message.Text),
+                            new KeyValuePair<string, string>("lang", "ru,en"),
+                            new KeyValuePair<string, string>("options", "0")
+                        });
+                var result = await client.PostAsync("", content);
+                string resultContent = await result.Content.ReadAsStringAsync();
+                words = JsonConvert.DeserializeObject<CheckText[]>(resultContent);
+            }
+            foreach (var word in words)
+            {
+                goodText.Append(word?.S[0] ?? word.Word);
+                goodText.Append(" ");
+            }
+            await botClient.SendTextMessageAsync(chatId, goodText.ToString(), parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
         }
     }
 }
