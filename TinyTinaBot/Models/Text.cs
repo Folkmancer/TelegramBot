@@ -24,7 +24,7 @@ namespace TinyTinaBot.Models
             if (words != null)
             foreach (var word in words)
             {
-                text.Replace(word.Word, word.S[0]);
+                text = text.Replace(word.Word, word.S[0]);
             }
             await botClient.SendTextMessageAsync(chatId, text.ToString(), parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
         }
