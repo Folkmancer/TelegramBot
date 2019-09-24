@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TinyTinaBot.Models;
 using System.Threading.Tasks;
+using TinyTinaBot.Models;
 
 namespace TinyTinaBot.Test
 {
