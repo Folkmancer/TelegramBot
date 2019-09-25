@@ -9,12 +9,12 @@ COPY ["TinyTinaBot/TinyTinaBot.csproj", "TinyTinaBot/"]
 RUN dotnet restore "TinyTinaBot/TinyTinaBot.csproj"
 COPY . .
 WORKDIR "/src/TinyTinaBot"
-RUN dotnet build "TinyTinaBot.csproj" -c Release -o /app/build
+RUN dotnet build "TinyTinaBot.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "TinyTinaBot.csproj" -c Release -o /app/publish
+RUN dotnet publish "TinyTinaBot.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 CMD ASPNETCORE_URLS=http://*:$PORT BotUrl=$BOT_URL BotName=$BOT_NAME  BotKey=$BOT_KEY dotnet TinyTinaBot.dll
