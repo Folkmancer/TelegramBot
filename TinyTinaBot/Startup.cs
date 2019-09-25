@@ -20,9 +20,7 @@ namespace TinyTinaBot
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-                .AddMvcOptions(options => options.EnableEndpointRouting = false);
+            services.AddMvcCore().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +36,13 @@ namespace TinyTinaBot
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseRouting();
+            //app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
             Bot.GetBotClientAsync().Wait();
         }
     }
