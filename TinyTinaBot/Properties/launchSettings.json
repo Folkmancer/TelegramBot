@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/message/update",
       "environmentVariables": {
         "BotName": "",
         "BotKey": "",
@@ -23,7 +23,7 @@
     "TinyTinaBot": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/message/update",
       "environmentVariables": {
         "BotName": "",
         "BotKey": "",
@@ -35,7 +35,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/values",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/message/update",
       "environmentVariables": {
         "BotName": "",
         "BotKey": "",
