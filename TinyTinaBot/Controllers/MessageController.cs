@@ -5,7 +5,7 @@ using TinyTinaBot.Models;
 
 namespace TinyTinaBot.Controllers
 {
-    [Route("api/message/update")]
+    //[Route("api/message/update")]
     [ApiController]
     public class MessageController : ControllerBase
     {
