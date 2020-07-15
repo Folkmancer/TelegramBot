@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
@@ -20,13 +21,19 @@ namespace TinyTinaBot.Models
         {
             var chatId = message.Chat.Id;
             var text = message.Text;
-            CheckText[] words = await Speller.CheckText(text);
-            if (words != null)
+            var words = await Speller.CheckText(text);
+
             foreach (var word in words)
             {
                 text = text.Replace(word.Word, word.S[0]);
             }
+
             await botClient.SendTextMessageAsync(chatId, text.ToString(), parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
+
+            if (words.Any(word => word.Code == 4))
+            {
+                await botClient.SendTextMessageAsync(chatId, "Текст содержит слишком много ошибок", parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
+            }
         }
     }
 }
