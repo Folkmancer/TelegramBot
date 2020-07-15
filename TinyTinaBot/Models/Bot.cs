@@ -25,8 +25,9 @@ namespace TinyTinaBot.Models
             //TODO: Add more commands
 
             botClient = new TelegramBotClient(BotSettings.Key);
-            string hook = string.Format(BotSettings.Url, "api/message/update");
+            var hook = string.Format(BotSettings.Url, "api/message/update");
             await botClient.SetWebhookAsync(hook);
+            
             return botClient;
         }
     }

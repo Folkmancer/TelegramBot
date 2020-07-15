@@ -18,7 +18,10 @@ namespace TinyTinaBot.Controllers
         [HttpPost]
         public async Task<OkResult> Post([FromBody]Update update)
         {
-            if (update == null) return Ok();
+            if (update == null)
+            {
+                return Ok();
+            }
 
             var commands = Bot.Commands;
             var message = update.Message;
@@ -32,6 +35,7 @@ namespace TinyTinaBot.Controllers
                     break;
                 }
             }
+
             return Ok();
         }
     }

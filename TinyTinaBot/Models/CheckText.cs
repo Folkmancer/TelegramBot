@@ -15,5 +15,11 @@ namespace TinyTinaBot.Models
         /// </summary>
         [JsonProperty("s")]
         public string[] S { get; private set; }
+
+        /// <summary>
+        /// Информация об ошибке (может быть несколько или могут отсутствовать).
+        /// </summary>
+        [JsonProperty("code")]
+        public long Code { get; private set; }
     }
 }
