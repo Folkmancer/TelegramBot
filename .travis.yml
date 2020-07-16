@@ -13,4 +13,4 @@ branches:
   - develop
 after_success:
   - sh .travis/deploy_dockerhub.sh
-  - test "$TRAVIS_BRANCH" = "master" || "$TRAVIS_BRANCH" = "develop" && sh .travis/deploy_heroku.sh
+  - test "$TRAVIS_BRANCH" = "master" || test "$TRAVIS_BRANCH" = "develop" && sh .travis/deploy_heroku.sh
