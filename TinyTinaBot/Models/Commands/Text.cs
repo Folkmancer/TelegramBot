@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 
 namespace TinyTinaBot.Models.Commands
 {
@@ -10,7 +11,7 @@ namespace TinyTinaBot.Models.Commands
 
         public bool Contains(Message message)
         {
-            return message.Text[0] != '/';
+            return message.Type != MessageType.Text || message.Text[0] != '/';
         }
 
         public async Task Execute(Message message, TelegramBotClient botClient)
@@ -26,7 +27,7 @@ namespace TinyTinaBot.Models.Commands
                 text = "Не удалось получить текст сообщения.";
             }
 
-            await botClient.SendTextMessageAsync(message.Chat.Id, text.ToString(), parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
+            await botClient.SendTextMessageAsync(message.Chat.Id, text.ToString(), parseMode: ParseMode.Markdown);
         }
 
         private async Task<string> GetProcessedText(string text)
