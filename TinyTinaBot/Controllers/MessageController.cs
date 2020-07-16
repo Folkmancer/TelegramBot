@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Telegram.Bot.Types;
 using TinyTinaBot.Models;
+using Microsoft.Extensions.Logging;
 
 namespace TinyTinaBot.Controllers
 {
@@ -9,6 +10,8 @@ namespace TinyTinaBot.Controllers
     [Route("api/message/update")]
     public class MessageController : ControllerBase
     {
+        private readonly ILogger<MessageController> _logger;
+
         [HttpGet]
         public string Get()
         {
@@ -26,6 +29,8 @@ namespace TinyTinaBot.Controllers
             var commands = Bot.Commands;
             var message = update.Message;
             var botClient = await Bot.GetBotClientAsync();
+
+            _logger.LogInformation("Received Message from {0}", message.Chat.Id);
 
             foreach (var command in commands)
             {
