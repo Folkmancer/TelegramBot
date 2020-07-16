@@ -45,9 +45,9 @@ namespace TinyTinaBot.Controllers
         //}
 
         [HttpPost]
-        public async Task<OkResult> PostMessage(Message message)
+        public async Task<OkResult> PostMessage(Update update)
         {
-            _logger.LogInformation("Received Message1 from {0}", message.Chat.Id);
+            _logger.LogInformation("Received Message1 from {0}", update.Message.Chat.Id);
 
             return Ok();
         }
