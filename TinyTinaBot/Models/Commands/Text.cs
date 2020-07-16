@@ -2,7 +2,7 @@
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace TinyTinaBot.Models
+namespace TinyTinaBot.Models.Commands
 {
     public class Text : ICommand
     {

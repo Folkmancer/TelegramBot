@@ -19,7 +19,7 @@ namespace TinyTinaBot.Controllers
         }
 
         [HttpPost]
-        public async Task<OkResult> Post([FromBody]Update update)
+        public async Task<OkResult> Post(Update update)
         {
             if (update == null)
             {
@@ -40,6 +40,14 @@ namespace TinyTinaBot.Controllers
                     break;
                 }
             }
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<OkResult> PostMessage(Message message)
+        {
+            _logger.LogInformation("Received Message1 from {0}", message.Chat.Id);
 
             return Ok();
         }

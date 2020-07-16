@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Telegram.Bot;
+using TinyTinaBot.Models.Commands;
 
 namespace TinyTinaBot.Models
 {
