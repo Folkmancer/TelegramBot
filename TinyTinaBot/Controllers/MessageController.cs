@@ -18,38 +18,38 @@ namespace TinyTinaBot.Controllers
             return "Method GET unuvalable";
         }
 
+        //[HttpPost]
+        //public async Task<OkResult> Post(Update update)
+        //{
+        //    if (update == null)
+        //    {
+        //        return Ok();
+        //    }
+
+        //    var commands = Bot.Commands;
+        //    var message = update.Message;
+        //    var botClient = await Bot.GetBotClientAsync();
+
+        //    _logger.LogInformation("Received Message from {0}", message.Chat.Id);
+
+        //    foreach (var command in commands)
+        //    {
+        //        if (command.Contains(message))
+        //        {
+        //            await command.Execute(message, botClient);
+        //            break;
+        //        }
+        //    }
+
+        //    return Ok();
+        //}
+
         [HttpPost]
-        public async Task<OkResult> Post(Update update)
-        {
-            if (update == null)
-            {
-                return Ok();
-            }
-
-            var commands = Bot.Commands;
-            var message = update.Message;
-            var botClient = await Bot.GetBotClientAsync();
-
-            _logger.LogInformation("Received Message from {0}", message.Chat.Id);
-
-            foreach (var command in commands)
-            {
-                if (command.Contains(message))
-                {
-                    await command.Execute(message, botClient);
-                    break;
-                }
-            }
-
-            return Ok();
-        }
-
-        /*[HttpPost]
         public async Task<OkResult> PostMessage(Message message)
         {
             _logger.LogInformation("Received Message1 from {0}", message.Chat.Id);
 
             return Ok();
-        }*/
+        }
     }
 }
