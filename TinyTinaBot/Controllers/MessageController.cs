@@ -21,6 +21,8 @@ namespace TinyTinaBot.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Update update)
         {
+            _logger.LogInformation($"Test {update != null}");
+
             if (update == null)
             {
                 return Ok();
