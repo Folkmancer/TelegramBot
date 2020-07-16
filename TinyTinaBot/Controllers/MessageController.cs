@@ -12,6 +12,11 @@ namespace TinyTinaBot.Controllers
     {
         private readonly ILogger<MessageController> _logger;
 
+        public MessageController(ILogger<MessageController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet]
         public string Get()
         {
