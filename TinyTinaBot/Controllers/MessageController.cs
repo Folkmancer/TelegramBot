@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Telegram.Bot.Types;
 using TinyTinaBot.Models;
-using Microsoft.Extensions.Logging;
 
 namespace TinyTinaBot.Controllers
 {
@@ -21,8 +21,6 @@ namespace TinyTinaBot.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Update update)
         {
-            _logger.LogInformation($"Test {update != null}");
-
             if (update == null)
             {
                 return Ok();
