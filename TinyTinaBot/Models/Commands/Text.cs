@@ -10,10 +10,7 @@ namespace TinyTinaBot.Models.Commands
 
         public bool Contains(Message message)
         {
-            if (message.Type != Telegram.Bot.Types.Enums.MessageType.Text)
-                return false;
-
-            return (message.Text[0] != '/');
+            return message.Text[0] != '/';
         }
 
         public async Task Execute(Message message, TelegramBotClient botClient)
