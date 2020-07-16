@@ -18,8 +18,22 @@ namespace TinyTinaBot.Models.Commands
 
         public async Task Execute(Message message, TelegramBotClient botClient)
         {
-            var chatId = message.Chat.Id;
             var text = message.Text;
+
+            if (!string.IsNullOrEmpty(text))
+            {
+                text = await GetProcessedText(text);
+            }
+            else
+            {
+                text = "Не удалось получить текст сообщения.";
+            }
+
+            await botClient.SendTextMessageAsync(message.Chat.Id, text.ToString(), parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
+        }
+
+        private async Task<string> GetProcessedText(string text)
+        {
             var words = await Speller.CheckText(text);
 
             foreach (var word in words)
@@ -27,7 +41,7 @@ namespace TinyTinaBot.Models.Commands
                 text = text.Replace(word.Word, word.S[0]);
             }
 
-            await botClient.SendTextMessageAsync(chatId, text.ToString(), parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
+            return text;
         }
     }
 }
