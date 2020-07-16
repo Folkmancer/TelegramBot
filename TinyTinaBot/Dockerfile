@@ -15,4 +15,4 @@ RUN dotnet publish "TinyTinaBot.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-CMD ASPNETCORE_URLS=http://*:$PORT ASPNETCORE_HTTPS_PORT=$PORT BotUrl=$BOT_URL BotName=$BOT_NAME BotKey=$BOT_KEY dotnet TinyTinaBot.dll
+CMD ASPNETCORE_URLS=http://*:$PORT BotUrl=$BOT_URL BotName=$BOT_NAME BotKey=$BOT_KEY dotnet TinyTinaBot.dll
