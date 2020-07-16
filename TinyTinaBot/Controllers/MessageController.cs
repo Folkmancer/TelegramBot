@@ -44,12 +44,12 @@ namespace TinyTinaBot.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<OkResult> PostMessage(Message message)
         {
             _logger.LogInformation("Received Message1 from {0}", message.Chat.Id);
 
             return Ok();
-        }
+        }*/
     }
 }
