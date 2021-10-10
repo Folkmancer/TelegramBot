@@ -5,7 +5,14 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinyTinaBot", "TinyTinaBot\TinyTinaBot.csproj", "{02E8B71E-2574-49D6-BD3C-9CBD540118F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyTinaBot.Test", "TinyTinaBot.Test\TinyTinaBot.Test.csproj", "{C5806DBC-6E19-41E5-878D-985BE4F99AEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinyTinaBot.Test", "TinyTinaBot.Test\TinyTinaBot.Test.csproj", "{C5806DBC-6E19-41E5-878D-985BE4F99AEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0E407AD2-CE4F-4E84-9CCA-97B5CCAAB3ED}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+		.travis\deploy_dockerhub.sh = .travis\deploy_dockerhub.sh
+		.travis\deploy_heroku.sh = .travis\deploy_heroku.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

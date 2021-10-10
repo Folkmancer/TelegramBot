@@ -1,7 +1,7 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:5.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/sdk:5.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["TinyTinaBot/TinyTinaBot.csproj", "TinyTinaBot/"]
 RUN dotnet restore "TinyTinaBot/TinyTinaBot.csproj"
@@ -15,4 +15,4 @@ RUN dotnet publish "TinyTinaBot.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-CMD ASPNETCORE_URLS=http://*:$PORT BotUrl=$BOT_URL BotName=$BOT_NAME BotKey=$BOT_KEY dotnet TinyTinaBot.dll
+CMD ASPNETCORE_URLS=http://*:$PORT BotConfiguration:HostAddress=$BOT_URL BotConfiguration:BotName=$BOT_NAME BotConfiguration:BotToken=$BOT_KEY dotnet TinyTinaBot.dll
