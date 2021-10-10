@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 
 namespace TinyTinaBot.Services
 {
-    public class UpdateHandlerService
+    public class UpdateHandlerService : IUpdateHandlerService
     {
         private readonly ILogger<UpdateHandlerService> logger;
         private readonly ITelegramBotClient botClient;
