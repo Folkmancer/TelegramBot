@@ -1,7 +1,7 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["TinyTinaBot/TinyTinaBot.csproj", "TinyTinaBot/"]
 RUN dotnet restore "TinyTinaBot/TinyTinaBot.csproj"
